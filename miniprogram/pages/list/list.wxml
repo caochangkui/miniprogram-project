@@ -1,0 +1,25 @@
+<!--miniprogram/pages/list/list.wxml-->
+<scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+  <!-- <view class='box' wx:for='{{list}}' wx:key='{{index}}'>
+    <text>{{item.title}}</text>
+  </view>  -->
+  <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-id='{{item.id}}' bindtap='goDetail'>
+    <image src='{{item.albums}}'></image>
+    <view class='right'>
+      <text class='title'>{{item.title}}</text>
+      <text>原料：{{item.ingredients}}</text>
+      <text>用料：{{item.burden}}</text>
+      <text class='see'>{{item.id}} 人浏览</text>
+    </view>
+  </view>
+  
+  <view class='loading' wx:if="{{loading}}" style='text-align:center;'>
+    <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+  </view>
+  <view class='bottom' wx:if="{{isOver}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+    <text style='color:#666;'>--- 我是有底线的 ---</text>
+  </view>
+  <view class='no-list' wx:if="{{noList}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+    <text style='color:#666;'>--- 未找到您搜索的菜品 ---</text>
+  </view>
+</scroll-view>

@@ -1,0 +1,18 @@
+<view>
+  <view class='search'>
+    <image src='/images/search.png'></image>
+    <input placeholder='今天吃什么' focus bindinput="bindKeyInput" bindconfirm='goSearch' ></input>
+    <text bindtap='goSearch'>搜索</text>
+  </view>
+  <view class='history'>
+    <text class='title'>搜索历史</text>
+    <text class='clear' wx:if='{{historyList.length}}' bindtap='bindClearHistory'>清空历史</text>
+    <view>
+      <text wx:for='{{historyList}}' wx:key='{{index}}' bindtap='historyGoSearch' data-title="{{item}}">{{item}}</text>
+    </view>
+  </view>
+
+    <view wx:if='{{!historyList.length}}' style='text-align:center;color:#666;font-size:24rpx;' >
+      搜索历史为空
+    </view>
+</view>

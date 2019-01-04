@@ -1,0 +1,110 @@
+/* miniprogram/pages/user/user.wxss */
+
+.user {
+  font-size: 28rpx;
+}
+
+.logout {
+  text-align: center;
+  padding: 160rpx 200rpx;
+}
+
+.logout button {
+  margin-top: 100rpx;
+  line-height: 80rpx;
+  font: 28rpx;
+  background: #ff6262;
+  color: #fff;
+}
+
+.login {
+  margin: 0;
+}
+
+.login .name image {
+  height: 140rpx;
+  width: 140rpx;
+  border-radius: 50%;
+  animation: avator linear 16s infinite normal;
+}
+
+@keyframes avator {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.login .name {
+  background: linear-gradient(#f79642, #f5798d);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx;
+}
+
+.login .name text {
+  padding-top: 20rpx;
+  color: #fff;
+}
+
+.login .collection {
+  padding: 50rpx 30rpx;
+  background: #fff;
+}
+.login .collection .my {
+  font-weight: bold;
+  border-left: 3px solid #ff6262;
+  padding-left: 14rpx;
+}
+
+.box {
+  border: 1px solid #ddd;
+  margin: 40rpx 0 0 0;
+  padding: 20rpx 30rpx 20rpx 270rpx;
+  font-size: 28rpx;
+  height: 200rpx;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10rpx;
+  box-shadow: 1px 1px 6rpx #ccc;
+}
+
+.box image {
+  height: 200rpx;
+  width: 220rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 10rpx;
+  border-radius: 10rpx;
+}
+
+.box view {
+  padding-top: 0rpx;
+}
+
+.box view text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-bottom: 10rpx;
+  color: #555;
+  font-size: 24rpx;
+}
+
+.box view text.title {
+  color: #333;
+  font-weight: 600;
+  font-size: 30rpx;
+  padding-bottom: 16rpx;
+}
+
+.box view text.see {
+  color: #ff6262;
+  padding-top: 40rpx;
+}

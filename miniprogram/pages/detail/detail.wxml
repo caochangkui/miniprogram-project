@@ -1,0 +1,61 @@
+<!--miniprogram/pages/detail/detail.wxml-->
+<view class='detail' wx:if='{{isExit}}'>
+    <view class='banner'>
+      <image src='{{detail.albums[0]}}'  ></image>
+    </view>
+    <view class='title'>
+      <text>{{detail.title}}</text>
+      <view class='see'> <image src='/images/see.png' mode='widthFix'></image> {{detail.id}} 人浏览</view>
+      <view class='tags'>
+        <text wx:for='{{tags}}' wx:key='{{index}}'>{{item}}</text>
+      </view>
+      <view class='intro'>
+        {{detail.imtro}}
+      </view>
+    </view>
+    <view class='ingredients'>
+      <text>主料</text> 
+      <text wx:for='{{ingredients}}' wx:key='{{index}}'>{{item}}</text>
+    </view>
+    <view class='ingredients'>
+      <text>辅料</text>
+      <text wx:for='{{burden}}' wx:key='{{index}}'>{{item}}</text>
+    </view>
+    <view class='steps'> 
+      <text class='top'>步骤</text>
+      <view class='item' wx:for='{{detail.steps}}' wx:key='{{index}}'>
+        <text>第{{index + 1}}步</text>
+        <image src='{{item.img}}'></image>
+        <view>{{item.step}}</view>
+      </view> 
+    </view>
+</view>
+
+<!-- 首页 -->
+<view class='backhome' bindtap='onBackhome'>
+  <image src='/images/nav/index-active.png'></image>
+  <!-- <text>首页</text> -->
+</view>
+
+<!-- 分享 -->
+<view class='share'>
+  <image src='/images/share.png'></image>
+  <text>分享</text>
+  <button open-type='share'></button>
+</view>
+
+<!-- 用户未登录 -->
+<view class='collect' wx:if='{{!logged}}' style='z-index:11;background: rgba(0, 0, 0, .1);'>
+  <button open-type="getUserInfo" bindgetuserinfo='getUser' style='border:1;'></button>
+</view>
+
+<!-- 用户已登录 -->
+<view class='collect' catchtap='bindCollect' >
+  <image src='/images/collect.png'></image>
+  <text wx:if='{{isCollect}}'>收藏</text>
+  <text wx:if='{{!isCollect}}'>已收藏</text>
+</view>
+
+<view class='no-list' wx:if="{{!isExit}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+  <text style='color:#666;'>--- 未找到您搜索的菜品 ---</text>
+</view>
