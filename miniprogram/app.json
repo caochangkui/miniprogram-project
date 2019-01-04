@@ -6,7 +6,6 @@
     "pages/detail/detail",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
-    "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",
     "pages/search/search",
     "pages/list/list"
