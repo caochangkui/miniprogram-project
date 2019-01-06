@@ -93,7 +93,7 @@ Page({
         if (!res.data.length) {
           console.log(' 历史记录为空')
           let historyArray = []
-          historyArray.push(content)
+          historyArray.unshift(content)
           db.collection('food').add({
             data: {
               _id: 'history' + that.data.openid,
@@ -106,7 +106,7 @@ Page({
         } else {    
           console.log('已有历史记录')
           let historyArray = res.data[0].historyList
-          historyArray.push(content)
+          historyArray.unshift(content)
           console.log([...new Set(historyArray)])
           db.collection('food').doc('history' + that.data.openid).update({
             data: {
