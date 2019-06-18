@@ -2,39 +2,59 @@
   "pages": [
     "pages/index/index",
     "pages/menu/menu",
+    "pages/find/find",
     "pages/user/user",
+    "pages/list/list",
     "pages/detail/detail",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/chooseLib/chooseLib",
+    "pages/poet/poet",
+    "pages/idiom/idiom",
+    "pages/idiom-detail/idiom-detail",
+    "pages/idiom-jielong/idiom-jielong",
+    "pages/xiehouyu/xiehouyu",
+    "pages/baijiaxing/baijiaxing",
+    "pages/baijiaxing-detail/baijiaxing-detail",
+    "pages/miyu/miyu",
+    "pages/ranking/ranking",
+    "pages/myRecord/myrecord",
+    "pages/collection/collection",
     "pages/search/search",
-    "pages/list/list"
+    "pages/cangtoushi/cangtoushi",
+    "pages/aboutme/aboutme",
+    "pages/feihua-select/feihua-select",
+    "pages/feihualing/feihualing",
+    "pages/suggest/suggest",
+    "pages/cangtoushi-detail/cangtoushi-detail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "开饭嘞",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#FF6262",
+    "navigationBarTitleText": "诗词古语",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#6e6d6b",
     "selectedColor": "#FF6262",
     "borderStyle": "white",
     "backgroundColor": "#fff",
-    "box-shadow": "0 0 6px 0",
     "list": [
       {
         "pagePath": "pages/index/index",
         "iconPath": "/images/nav/index.png",
         "selectedIconPath": "/images/nav/index-active.png",
-        "text": "首页"
+        "text": "推荐"
       },
       {
         "pagePath": "pages/menu/menu",
         "iconPath": "/images/nav/menu.png",
         "selectedIconPath": "/images/nav/menu-active.png",
-        "text": "菜单"
+        "text": "诗词"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "iconPath": "/images/nav/find.png",
+        "selectedIconPath": "/images/nav/find-active.png",
+        "text": "好玩"
       },
       {
         "pagePath": "pages/user/user",
@@ -43,5 +63,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

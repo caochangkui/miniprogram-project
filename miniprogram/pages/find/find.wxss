@@ -1,0 +1,45 @@
+.find {
+  height: 100%;
+  padding: 0 30rpx;
+}
+.find .item {
+  background: #fff;
+  height: 240rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+.title {
+  font-size: 40rpx;
+  color: #FF6262;
+}
+
+.option button {
+  display: inline-block;
+  margin: 0 10rpx;
+  font-size: 30rpx;
+  /* border: 1px solid #ccc; */
+  /* background: #FF6262; */
+  /* color: #fff; */
+  outline: none;
+  border: 0;
+}
+
+.comming button {
+  color: #999;
+  background: #eee;
+  border: 0;
+  outline: none;
+  /* border: 1px solid #ccc; */
+}
+
+
+
+
+
+
+
+
+

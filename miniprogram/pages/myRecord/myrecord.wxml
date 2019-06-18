@@ -1,0 +1,31 @@
+<view class="record" wx:if='{{isDown}}'>
+
+  <view class='bottom' wx:if="{{!historyList.length}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+    <text style='color:#666;'>--- 您还没有成语接龙记录 ---</text>
+  </view>
+
+  <view class='goJielong'>
+    <button type="primary" bindtap='goJielong'>{{!historyList.length ? '开始' : '继续'}}挑战</button>
+  </view>
+
+  <view class="item" wx:for='{{historyList}}' wx:key='{{index}}' wx:for-index="parentIdx" wx:for-item="parentItem">
+    <view class='title'>
+      <view wx:if="{{showMore == parentIdx}}" class='btn' data-parentIdx='{{parentIdx}}' bindtap='foldToggle'>
+        <text>{{parentItem.length - 1}} 分</text>
+        <i class="wx-icon-custom-spread-line"></i>
+      </view>
+      <view wx:else class='btn' data-parentIdx='{{parentIdx}}' bindtap='unfoldToggle'>
+        <text>{{parentItem.length - 1}} 分</text>
+        <i class="wx-icon-custom-gengduo"></i>
+      </view>
+    </view>
+    <view class='content'>
+      <view class='tips' wx:if="{{showMore == parentIdx}}"> 点击成语可查看详情 </view>
+      <view class='' wx:if="{{showMore == parentIdx}}" wx:for='{{parentItem}}' wx:key='{{index}} ' wx:for-index="childIdx" wx:for-item="childItem">
+        <text data-idiom='{{childItem.robot}}' bindtap='goIdiomDetail'>{{childItem.robot}}</text>
+        -->
+        <text data-idiom='{{childItem.user}}' bindtap='goIdiomDetail'>{{childItem.user || '【结束】'}}</text>
+      </view>
+    </view>
+  </view>
+</view>

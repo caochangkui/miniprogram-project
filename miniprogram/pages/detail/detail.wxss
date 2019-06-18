@@ -1,31 +1,42 @@
 /* miniprogram/pages/detail/detail.wxss */
-page {
-  background: #e7e8e7;
-}
 .detail {
-  font-size: 28rpx; 
-}
-.detail .banner {
-  height: 500rpx;
-  overflow: hidden;
-}
-.detail .banner image {
-  width: 100%;
-  height: 100%;
+  font-size: 32rpx;
+  padding: 30rpx;
 }
 .title {
-  background: #fff;
+  font-size: 36rpx;
   text-align: center;
-  padding: 40rpx 30rpx; 
-}
-
-.title>text:nth-child(1) {
-  font-size: 34rpx;
   margin-bottom: 20rpx;
-  display: block;
+}
+.poet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #444;
 }
-.title .tags text {
+.poet>view {
+  padding: 10rpx 20rpx;
+}
+.poet>view.name {
+  color: #2673db;
+}
+.poet view text {
+  color: #666;
+}
+.poem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+}
+.poem text {
+  line-height: 1.6;
+  font-size: 32rpx;
+}
+.tags {
+  text-align: center;
+}
+.tags text {
   display: inline-block;
   border: 1px solid #ddd;
   color: #777;
@@ -34,78 +45,54 @@ page {
   border-radius: 30rpx;
   font-size: 24rpx;
 }
-.title .see {
-  font-size: 24rpx;
-  color: #777;
-  padding-bottom: 20rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.title .see image {
-  width: 30rpx; 
-  margin-right: 10rpx;
-}
-.title .intro {
-  font-size: 24rpx;
-  color: #666;
-  padding-top: 30rpx;
+
+.more {
+  margin-top: 50rpx;
 }
 
-.ingredients {
-  margin-top: 20rpx;
-  padding: 20rpx 30rpx;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-}
-.ingredients text:nth-child(1) {
-  font-size: 36rpx;
-  font-weight: bold;
+.tab {
+  float: left;
+  width: 33.3333%;
   text-align: center;
-  padding: 20rpx;
-}
-
-.ingredients text:not(:first-child)  {
-  font-size: 28rpx;
   padding: 10rpx 0;
-  color: #666;
 }
 
-.steps {
-  margin-top: 20rpx;
-  padding: 20rpx 30rpx;
-  background: #fff;
+.topTabSwiper {
+  border-bottom: 1px solid #ccc;
+  zoom: 1;
 }
-.steps .top {
-  font-size: 36rpx;
-  font-weight: bold;
-  text-align: center;
+
+.topTabSwiper:after {
+  content: "";
+  clear: both;
   display: block;
-  padding: 20rpx;
 }
 
-.steps .item {
-  padding: 30rpx 0;
-  text-align: center;
+.tabBorer {
+  border-bottom: 1px solid #f00;
+  color: #f00;
 }
-.steps .item text {
-  font-size: 32rpx;
-  color: #FF6262;
-  padding: 0 20rpx;
+
+.swiper {
+  width: 100%;
+}
+
+.itembox {
+  width: 100%;
+  padding: 40rpx 0;
+}
+.itembox view {
   margin-bottom: 20rpx;
-  border-left: 8rpx solid #FF6262;
+}
+.itembox {
+  display: none
+}
+.showItem {
   display: block;
-  text-align: left;
 }
 
-.steps .item view {
-  font-size: 28rpx;
-  color: #444;
-  padding: 20rpx 0; 
-}
 
-.collect { 
+.collect {
   height: 120rpx;
   width: 120rpx;
   position: fixed;
@@ -126,7 +113,7 @@ page {
   width: 50rpx;
 }
 .collect text {
-  color: #fff;  
+  color: #fff;
 }
 
 .collect button {
@@ -137,7 +124,7 @@ page {
 }
 
 
-.share { 
+.share {
   height: 120rpx;
   width: 120rpx;
   position: fixed;
@@ -151,13 +138,13 @@ page {
   background: rgba(0, 0, 0, .6);
   border-radius: 50%;
   z-index: 10;
-} 
+}
 .share image {
   height: 70rpx;
   width: 70rpx;
 }
 .share text {
-  color: #fff;  
+  color: #fff;
 }
 
 .share button {
@@ -168,9 +155,9 @@ page {
   z-index: 99;
 }
 
-.backhome { 
-  height: 100rpx;
-  width: 100rpx;
+.backhome {
+  height: 110rpx;
+  width: 110rpx;
   position: fixed;
   top: 10rpx;
   right: 20rpx;
@@ -181,14 +168,15 @@ page {
   font-size: 24rpx;
   background: rgba(255, 255, 255, .4);
   border-radius: 50%;
+  box-shadow: 1px 1px 2px #bbb;
   z-index: 10;
-} 
+}
 .backhome image {
-  height: 60rpx;
-  width: 60rpx;
+  height: 50rpx;
+  width: 50rpx;
 }
 .backhome text {
-  color: #fff;  
+  color: #666;
+  font-size: 20rpx;
 }
-
 

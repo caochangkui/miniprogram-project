@@ -1,0 +1,52 @@
+.detail {
+  font-size: 32rpx;
+  padding: 30rpx;
+}
+
+.title {
+  font-size: 44rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.poet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+}
+
+.poet>view {
+  padding: 10rpx 20rpx;
+}
+
+
+.poet view text {
+  color: #666;
+}
+
+.poem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.poem text {
+  line-height: 1.6;
+  font-size: 32rpx;
+}
+
+.tags {
+  text-align: center;
+}
+
+.tags text {
+  display: inline-block;
+  border: 1px solid #ddd;
+  color: #777;
+  margin: 10rpx;
+  padding: 4rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+}

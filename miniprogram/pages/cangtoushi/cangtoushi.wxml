@@ -1,0 +1,50 @@
+<view class="cangtoushi">
+  <view class='box'>
+    <view class="title">输入一个名字，查查包含于哪些古诗词。</view>
+    <form class='search' bindsubmit="formSubmit">
+      <view class="section">
+        <input name="key" placeholder="请输入姓名" />
+      </view>
+      <view class="section section_gap">
+        <radio-group name="dynasty">
+          <label>
+            <radio value="唐" checked />
+            唐代诗词
+          </label>
+          <label>
+            <radio value="宋" />
+            宋代诗词
+          </label>
+        </radio-group>
+      </view>
+      <view class="btn-area">
+        <button form-type="submit">查一查</button>
+      </view>
+    </form>
+  </view>
+
+  <view class="reload" wx:if="{{list.length}}" bindtap='reload'>不喜欢下面的诗词？换一首试试。
+    <i class="wx-icon-custom-shuaxin"></i>
+  </view>
+
+  <!-- 首页 分享 -->
+  <view class='options'>
+    <button type="primary" class="share" open-type='share'>分享给好友</button>
+    <button type="primary" bindtap='onBackhome'>首页更精彩</button>
+  </view>
+
+
+  <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-id='{{item.poem._id}}' bindtap='goCangtoushiDetail'>
+    <view class="word">{{item.word}}</view>
+    <view class="poem">
+      <view class="content">{{item.poem.content}}</view>
+      <view class="poet">{{item.poem.poet}}《{{item.poem.title}}》</view>
+    </view>
+  </view>
+  <view class='box loading' wx:if="{{loading}}" style='text-align:center;'>
+    <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+  </view>
+  <view class='bottom' wx:if="{{isOver}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+    <text style='color:#666;'>--- 没有找到相关的古诗词 ---</text>
+  </view>
+</view>

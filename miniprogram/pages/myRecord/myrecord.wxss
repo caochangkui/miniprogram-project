@@ -1,0 +1,39 @@
+
+.record {
+  padding: 30rpx;
+  height: 100%;
+  color: #555;
+  font-size: 28rpx;
+}
+.goJielong {
+  text-align: center;
+}
+.tips {
+  text-align: center;
+  font-size: 24rpx;
+  color: #f79090;
+}
+.item {
+  background: #fff;
+  text-align: center;
+  padding: 20rpx 0;
+  margin: 20rpx 0;
+}
+
+.item .title {
+  color: #FF6262;
+  font-size: 44rpx;
+}
+.item .title .btn {
+  padding: 10rpx 0;
+}
+.item .title text {
+  padding: 0 10rpx;
+}
+.content {
+  font-size: 32rpx;
+  line-height: 2;
+}
+.content text {
+  padding: 10rpx 20rpx;
+}

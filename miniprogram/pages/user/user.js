@@ -6,21 +6,21 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: { 
+  data: {
     userInfo: {},
-    avatarUrl: '',
+    avatarUrl: './user-unlogin.png',
     openid: '',
     logged: false,
     username: '',
     place: '',
-    collectList: []
+    showImg: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('进入用户页检查是否登录:', this.data.logged)
+    console.log('进入用户页检查是否登录:', app.globalData.isLogin)
     console.log('是否已授权：', wx.getStorageSync('isLogin'))
     console.log('是否已有用户openId：', app.globalData.openid)
 
@@ -29,27 +29,15 @@ Page({
       mask: true
     });
 
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          console.log('已授权')
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => { 
-              this.setData({
-                logged: true,
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo,
-                username: res.userInfo.nickName,
-                place: res.userInfo.province + ', ' + res.userInfo.country
-              })
-            }
-          })
-        }
-        wx.hideLoading();
-      }
-    })
+    if (app.globalData.isLogin) {
+      this.setData({
+        logged: true,
+        avatarUrl: app.globalData.avatarUrl,
+        username: app.globalData.username
+      })
+    }
+
+    wx.hideLoading();
 
     // 是否存在用户的openId
     if (app.globalData.openid) {
@@ -57,65 +45,89 @@ Page({
         openid: app.globalData.openid
       })
     }
-
   },
 
-  goDetail(e) {
+  goGame (e) {
+    if (!this.data.logged) {
+      wx.showToast({
+        title: '错误',
+        image: '/images/warn.png',
+        title: `请先登录`,
+        duration: 1500
+      })
+      return
+    }
     wx.navigateTo({
-      url: `/pages/detail/detail?id=${e.currentTarget.dataset.id}`,
+      url: `/pages/myRecord/myrecord?type=成语接龙`,
+    })
+  },
+
+  goCollection (e) {
+    if (!this.data.logged) {
+      wx.showToast({
+        title: '错误',
+        image: '/images/warn.png',
+        title: `请先登录`,
+        duration: 1500
+      })
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/collection/collection`,
+    })
+  },
+
+  goSuggest (e) {
+    if (!this.data.logged) {
+      wx.showToast({
+        title: '错误',
+        image: '/images/warn.png',
+        title: `请先登录`,
+        duration: 1500
+      })
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/suggest/suggest`,
+    })
+  },
+
+
+  addToMyapp (e) {
+    this.setData({
+      showImg: true
+    })
+  },
+
+  hideImg () {
+    this.setData({
+      showImg: false
+    })
+  },
+
+  goAbout (e) {
+    wx.navigateTo({
+      url: `/pages/aboutme/aboutme`,
     })
   },
 
   onGetUserInfo: function (e) {
-    if (!this.data.logged && e.detail.userInfo) { 
-      
-      console.log(e)
-      wx.setStorageSync('isLogin', 'isLogin')
+    if (!this.data.logged && e.detail.userInfo) {
 
       this.setData({
         logged: true,
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo,
-        username: e.detail.userInfo.nickName,
-        place: e.detail.userInfo.province + ', ' + e.detail.userInfo.country
+        username: e.detail.userInfo.nickName
       })
 
+      wx.setStorageSync('isLogin', 'isLogin')
+      wx.setStorageSync('avatarUrl', this.data.avatarUrl)
+      wx.setStorageSync('username', this.data.username)
+      app.globalData.isLogin = wx.getStorageSync('isLogin')
+      app.globalData.avatarUrl = wx.getStorageSync('avatarUrl')
+      app.globalData.username = wx.getStorageSync('username')
     }
-  },
-
-  // 读取收藏列表
-  getcollect () {
-    const db = wx.cloud.database()
-    // 查看是否有收藏记录
-    db.collection('food').where({
-      _openid: this.data.openid,
-      _id: 'collect' + this.data.openid
-    }).get({
-      success: res => {
-        console.log('[数据库] [查询记录] 成功: ', res) 
-
-        if (!res.data.length) { // 如果从未收藏
-          console.log(' 从未收藏') 
-          this.setData({
-            collectList: []
-          })
-        } else { // 如果已有收藏记录
-          db.collection('food').doc('collect' + this.data.openid).get().then(res => {
-            console.log(res.data)
-            this.setData({
-              collectList: res.data.collectList
-            })
-          })
-        }
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '查询记录失败'
-        })
-        console.error('[数据库] [查询记录] 失败：', err)
-      }
-    })
   },
 
   /**
@@ -129,8 +141,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getcollect()
-    console.log(0)
+    if (app.globalData.isLogin) {
+      this.setData({
+        logged: true,
+        avatarUrl: app.globalData.avatarUrl,
+        username: app.globalData.username
+      })
+    }
+
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
   },
 
   /**
@@ -147,24 +170,4 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

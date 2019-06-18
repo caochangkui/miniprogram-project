@@ -1,0 +1,76 @@
+<view class="jielong" wx:if='{{isDown}}'>
+  <view class="score" id="mjltest">
+    已得分：
+    <text>{{score}}</text>
+  </view>
+
+  <scroll-view scroll-y="true" style='height:95%;' scroll-top="{{scrollTop}}" class="box">
+    <view class="item-wrapper" wx:for='{{exampleList}}' wx:key='{{index}}'>
+      <view class="item left">
+        <image wx:if="{{item.robot}}" src='./jiqiren.png'></image>
+        <text wx:if="{{item.robot}}">{{item.robot}}</text>
+      </view>
+      <view class="item right">
+        <text wx:if="{{item.user}}">{{item.user}}</text>
+        <image wx:if="{{item.user}}" src='{{avatarUrl}}'></image>
+      </view>
+    </view>
+    <view class="line">
+      ----- 参考以上示例进行成语接龙 -----
+    </view>
+
+    <view class="item-wrapper" wx:for='{{list}}' wx:key='{{index}}'>
+      <view class="item left">
+        <image wx:if="{{item.robot}}" src='./jiqiren.png'></image>
+        <text wx:if="{{item.robot}}">{{item.robot}}</text>
+      </view>
+      <view class="item right">
+        <text wx:if="{{item.user}}">{{item.user}}</text>
+        <image wx:if="{{item.user}}" src='{{avatarUrl}}'></image>
+      </view>
+    </view>
+    <view style='text-align:center;height:20rpx;'></view>
+    <view class='loading' wx:if="{{loading}}" style='text-align:center;'>
+      <image class='' src='/images/loading/loading-bars.svg' style='height: 40px;width:120px;'></image>
+    </view>
+  </scroll-view>
+
+  <view class="bottom">
+    <view class="input-wrapper">
+      <input
+        class='input1'
+        placeholder='请输入【{{lastPinyin}}】音开头的成语'
+        type='text'
+        confirm-type='send'
+        cursor-spacing="20"
+        confirm-hold=true
+        value='{{inputValue}}'
+        bindinput="bindKeyInput"
+        bindconfirm='submitInput'
+      >
+      </input>
+      <!-- <text bindtap='submitInput'>提交</text>  -->
+      <input class='input2' disabled bindtap='submitInput' value="提交"></input>
+    </view>
+  </view>
+  <view class="tips">
+    <view class="logo" bindtap='showModal'>
+      <i class="wx-icon-custom-tishi"></i>
+      <text>提示</text>
+    </view>
+  </view>
+
+  <view class="alert-box" wx:if="{{showModalStatus}}">
+    <view class="wrapper">
+       <view class="txt" wx:if="{{tipNums}}" bindtap='getIdiomFromTips'>想不起来吗？还有 <text style="color:red; padding: 0 10rpx;"> {{tipNums}} </text>次提示机会，是否选择提示？</view>
+       <view class="txt" wx:if="{{!tipNums}}" > 3 次提示机会已用完, 分享给好友可增加 1 次提示机会</view>
+       <view class="options">
+        <button type="" bindtap='bindCancal'  >取消</button>
+        <button type="primary"  wx:if="{{tipNums}}" bindtap='getIdiomFromTips'>确定</button>
+        <button type="primary" wx:if="{{!tipNums}}" open-type='share'>分享</button>
+      </view>
+    </view>
+  </view>
+
+
+</view>

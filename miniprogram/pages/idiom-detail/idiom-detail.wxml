@@ -1,0 +1,24 @@
+<!-- miniprogram/pages/detail/detail.wxml -->
+<view class='detail' wx:if='{{isExist && isDown}}'>
+  <view class='title'>{{detail.word}}</view>
+  <view class='items'>
+    <view class="tag">成语拼音：</view>
+    <text class="text">{{detail.pinyin}}</text>
+  </view>
+  <view class='items'>
+    <view class="tag">成语释义：</view>
+    <text class="text">{{detail.explanation}}</text>
+  </view>
+  <view class='items'>
+    <view class="tag">成语出处：</view>
+    <text class="text">{{detail.derivation}}</text>
+  </view>
+  <view class='items'>
+    <view class="tag">成语例句：</view>
+    <text class="text">{{detail.example}}</text>
+  </view>
+
+</view>
+<view class='no-list' wx:if="{{!isExist}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+  <text style='color:#666;'>--- 未找到 ---</text>
+</view>

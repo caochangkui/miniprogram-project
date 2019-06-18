@@ -1,0 +1,33 @@
+.select {
+  padding: 30rpx;
+}
+
+.title {
+  text-indent: 40rpx;
+  font-size: 32rpx;
+  line-height: 1.7;
+}
+
+.list view {
+  font-size: 36rpx;
+  line-height: 4;
+  background: #fff;
+  color: #FF6262;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.list {
+  position: relative;
+  z-index: 9;
+}
+.list button {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 99;
+}

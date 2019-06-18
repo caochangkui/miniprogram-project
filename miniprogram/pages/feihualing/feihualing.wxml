@@ -1,0 +1,34 @@
+<view class="cangtoushi">
+  <view class='box'>
+    <view class="title">请输入一句含【{{type}}】的唐诗或者宋词</view>
+    <form class='search' bindsubmit="formSubmit">
+      <view class="section">
+        <input name="key" value='{{inputValue}}' placeholder="请输入诗词" />
+      </view>
+      <view class="btn-area">
+        <button form-type="submit">提交</button>
+      </view>
+    </form>
+  </view>
+  <view class='box loading' wx:if="{{loading}}" style='text-align:center;'>
+    <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+  </view>
+  <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-id='{{item._id}}' bindtap='goCangtoushiDetail'>
+    <view class="name">
+      <image src='{{item.avatarUrl}}'></image>
+      <text>{{item.username}}</text>
+      <text style="font-size:24rpx;color: #aaa;text-indent:20rpx;"> {{item.time}}</text>
+    </view>
+    <view class="poem">
+      <view class="content">{{item.content}}</view>
+      <view class="poet">{{item.title}} - [{{item.dynasty}}]{{item.poet}}</view>
+    </view>
+  </view>
+
+  <!-- 首页 分享 -->
+  <view class='options'>
+    <button type="primary" class="share" open-type='share'>分享给好友</button>
+    <button type="primary" bindtap='onBackhome'>首页更精彩</button>
+  </view>
+
+</view>

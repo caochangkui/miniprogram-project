@@ -1,32 +1,53 @@
 <!--miniprogram/pages/user/user.wxml-->
 <view class='user'>
-  <!-- 未登录时 -->
-  <view class='logout' wx:if='{{!logged}}'>
-    <text>请登录后查看您收藏的菜品</text>
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar">
-      登录
-    </button>
+  <view class='name'>
+    <image src='{{avatarUrl}}'></image>
+    <button class="userinfo-nickname" wx:if="{{!logged}}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点此登录</button>
+    <text>{{username}}</text>
   </view>
-  <view class='login' wx:if='{{logged}}'>
-    <view class='name'>
-      <image src='{{avatarUrl}}'></image>
-      <text>{{username}}</text>
-      <text>{{place}}</text>
-    </view>
-    <view class='collection' wx:if='{{collectList.length}}'>
-      <view class="my">我的菜谱</view>
 
-      <view class='box' wx:for='{{collectList}}' wx:key='{{index}}' data-id='{{item.id}}' bindtap='goDetail'>
-        <image src='{{item.albums[0]}}'></image>
-        <view class='right'>
-          <text class='title'>{{item.title}}</text>
-          <text>{{item.imtro}}</text>
-          <text class='see'>查看更多>></text>
-        </view>
+  <view class='box'>
+    <view class='item' data-openid='{{openid}}' bindtap='goCollection'>
+      <view class='item-inner'>
+        <view> 我的收藏</view>
       </view>
+      <i class="wx-icon-custom-gengduo"></i>
     </view>
-    <view class='collection' wx:if='{{!collectList.length}}' style='text-align:center;padding-top:50rpx;'>
-      <text style='color:#666;'>您还没有收藏过菜品</text>
+    <view class='item' data-openid='{{openid}}' bindtap='goGame'>
+      <view class='item-inner'>
+        <view> 我的挑战</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='item'>
+      <view class='item-inner'  bindtap='addToMyapp'>
+        <view> 添加到我的小程序</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='item'>
+      <view class='item-inner contact-me'>
+        <button open-type="contact" bindcontact="handleContact">联系开发者</button>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='item' data-openid='{{openid}}' bindtap='goSuggest'>
+      <view class='item-inner'>
+        <view> 建议反馈</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='item' data-openid='{{openid}}' bindtap='goAbout'>
+      <view class='item-inner'>
+        <view> 关于</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg' >
+      <image src='/images/add3.png' ></image>
     </view>
   </view>
+
+
+
 </view>

@@ -1,0 +1,20 @@
+<view class="select">
+  <view class="title">
+    飞花令，原本是古人行酒令时的一个文字游戏，源自古人的诗词之趣。这里对规则进行了简化，只要写出含有规定关键字的诗句即可。
+  </view>
+  <view class="title">
+    选择下面的一个关键字，开始挑战。
+  </view>
+  <view class='list'>
+    <view data-id='春' bindtap='goFeihua'>春</view>
+    <view data-id='夏' bindtap='goFeihua'>夏</view>
+    <view data-id='秋' bindtap='goFeihua'>秋</view>
+    <view data-id='冬' bindtap='goFeihua'>冬</view>
+    <view data-id='花' bindtap='goFeihua'>花</view>
+    <view data-id='好' bindtap='goFeihua'>好</view>
+    <view data-id='月' bindtap='goFeihua'>月</view>
+    <view data-id='圆' bindtap='goFeihua'>圆</view>
+
+    <button wx:if='{{!logged}}' open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>登录</button>
+  </view>
+</view>

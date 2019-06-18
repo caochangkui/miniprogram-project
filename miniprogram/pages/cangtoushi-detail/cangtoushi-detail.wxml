@@ -1,0 +1,13 @@
+<view class='detail' wx:if='{{isExist && isDown}}'>
+  <view class='title'>{{detail.title}}</view>
+  <view class="poet">
+    <view>【{{detail.dynasty}}】</view>
+    <view class="name">{{detail.poet}}</view>
+  </view>
+  <view class="poem">
+    <text>{{detail.content}}</text>
+  </view>
+  <view class='no-list' wx:if="{{!isExist}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+    <text style='color:#666;'>--- 未找到诗词详情 ---</text>
+  </view>
+</view>

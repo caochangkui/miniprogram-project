@@ -1,0 +1,15 @@
+<view class="collection">
+  <view class="total" wx:if="{{!loading}}">
+    --- 共收藏了{{list.length}}首诗词 ---
+  </view>
+  <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-id='{{item._id}}' bindtap='goDetail'>
+    <text class="title">{{item.name}}</text>
+    <text class="poet">{{item.content[0]}}{{item.content[1]}}</text>
+    <view class="name-like">
+      <text class="name">{{item.dynasty}} {{item.poet}}</text>
+    </view>
+  </view>
+  <view class='box loading' wx:if="{{loading}}" style='text-align:center;'>
+    <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+  </view>
+</view>

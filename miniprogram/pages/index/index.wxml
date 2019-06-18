@@ -1,50 +1,48 @@
-<!--index.wxml-->
-<view class="container"> 
-  <view class='top'>
-    <text> </text>
-    <view class='search' bindtap='goSearch'>
-      <image src='/images/search.png'></image>
-      <input placeholder='今天吃什么' disabled></input>
-    </view>
-    
+<!-- index.wxml -->
+<scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+  <view class="command">
+    <navigator url="/pages/idiom/idiom" open-type='navigate'>
+      <image class='' src='/images/home/chengyu4.png' mode="aspectFit"></image>
+    </navigator>
+    <navigator url="/pages/menu/menu" open-type='switchTab'>
+      <image class='' src='/images/home/shici4.png'></image>
+    </navigator>
+    <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
+      <image class='' src='/images/home/baijiaxing4.png'></image>
+    </navigator>
+    <navigator url="/pages/xiehouyu/xiehouyu" open-type='navigate'>
+      <image class='' src='/images/home/xiehouyu4.png'></image>
+    </navigator>
+    <navigator url="/pages/miyu/miyu" open-type='navigate'>
+      <image class='' src='/images/home/miyu4.png'></image>
+    </navigator>
   </view>
-  <swiper class='swiper' indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key='{{index}}'>
-      <swiper-item>
-        <image src="{{item.url}}" data-id='{{item.id}}' bindtap='goDetail' class="slide-image" />
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class='category'>
-    <view wx:for="{{category}}" wx:key='{{index}}' data-tags='{{item.id}}' data-content='{{item.name}}' bindtap='goList'>
-      <image src='{{item.img}}' mode='aspectFit'></image>
-      <text>{{item.name}}</text>
+  <view class="sentence">
+    <text class="title">每日一句</text>
+    <view wx:if="{{sentence._id}}" data-id='{{sentence._id}}' bindtap='goDetail'>
+      <text class="poet">{{sentence.cont}}</text>
+      <text class="name">{{sentence.name}} - {{sentence.dynasty}} {{sentence.poet}}</text>
+    </view>
+    <view wx:if="{{!sentence._id}}" style='text-align:center;'>
+      <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
     </view>
   </view>
-  <view class='place block'>
-    <view class='title'>
-      <text>热门标签</text>
-      <text class='more' bindtap='goMenu'>查看更多 >> </text>
-    </view>
-    <scroll-view class="scroll-view" scroll-x>
-      <view wx:for='{{scroll}}' wx:key='{{index}}' id='{{item.id}}' data-tags='{{item.id}}' data-content='{{item.name}}' bindtap='goList'>
-        <image src='{{item.img}}'></image>
-        <text>{{item.name}}</text>
-      </view>
-    </scroll-view>
-  </view>
-  <view class='like block'>
-    <view class='title'>
-      <text>猜你喜欢</text>
-      <text class='more'>您喜欢的美食 </text>
-    </view>
-    <view class="list">
-      <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-tags='{{item.id}}'  data-id='{{item.id}}' data-content='{{item.name}}' bindtap='goList'>
-        <image src='{{item.img}}'></image>
-        <view class='tip'>
-          <text>{{item.name}}</text> 
+  <view class="choiceness">
+    <text class="title">诗词精选</text>
+    <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-id='{{item._id}}' bindtap='goDetail'>
+      <text class="poet">{{item.content[0]}}{{item.content[1]}}</text>
+      <view class="name-like">
+        <text class="name">{{item.name}} - {{item.dynasty}} {{item.poet}}</text>
+        <view class="like">
+          <text>{{item.opened}} 人浏览</text>
         </view>
       </view>
     </view>
+    <view class='box loading' wx:if="{{loading}}" style='text-align:center;'>
+      <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+    </view>
+    <view class='bottom' wx:if="{{isOver}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+      <text style='color:#666;'>--- 我是有底线的 ---</text>
+    </view>
   </view>
-</view>
+</scroll-view>

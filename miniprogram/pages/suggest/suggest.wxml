@@ -1,0 +1,4 @@
+<view class="suggest">
+  <textarea placeholder="请输入您的建议或反馈" name="textarea" value='{{inputValue}}' bindinput="bindKeyInput" />
+  <button type="primary" disabled="{{isDisabled}}" bindtap='submitInput'>提交</button>
+</view>

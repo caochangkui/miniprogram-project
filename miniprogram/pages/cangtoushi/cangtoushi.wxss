@@ -1,0 +1,100 @@
+page {
+  position: relative;
+  padding: 20rpx 0 160rpx 0;
+  box-sizing: border-box;
+  height: auto;
+}
+.cangtoushi {
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.box {
+  margin-top: 20rpx;
+  padding: 30rpx 20rpx;
+  line-height: 2;
+  font-size: 30rpx;
+  background: #fff;
+}
+.title {
+  color: #444;
+  font-size: 32rpx;
+  line-height: 2;
+  text-align: center;
+}
+.search {
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+}
+.search .section {
+  width: 100%;
+}
+input {
+  height: 80rpx;
+  width: 100%;
+  border: 1px solid #eee;
+  margin: 20rpx 0;
+  background: #fff;
+  font-size: 30rpx;
+}
+.section_gap {
+  padding: 20px 0;
+}
+radio-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-area button {
+  background: #FF6262;
+  color: #fff;
+}
+
+
+.box .word {
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.box .content {
+  font-size: 30rpx;
+  text-align: center;
+  padding:  20rpx 20rpx 0 20rpx;
+}
+
+.box .poet {
+  text-align: right;
+  font-size: 24rpx;
+  color: #555;
+}
+
+.reload {
+  color: #FF6262;
+  padding: 20rpx  0;
+  text-align: center;
+  background: #fff;
+  border-radius: 8rpx;
+}
+
+.options {
+  position: fixed;
+  bottom: 20rpx;
+  left: 50%;
+  width: 680rpx;
+  margin-left: -340rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.options button {
+  width: 44%;
+  height: 60rpx;
+  font-size: 32rpx;
+  height: 80rpx;
+}

@@ -1,0 +1,50 @@
+.collection {
+  margin: 30rpx;
+}
+.box {
+  padding: 30rpx 20rpx;
+  margin-bottom: 24rpx;
+  background: #fff;
+  height: 220rpx;
+  line-height: 1.6;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+}
+.box .poet {
+  text-overflow: -o-ellipsis-lastline;
+  height: 38%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 2;
+  color: #666;
+}
+
+.box .name-like {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box .name-like .name {
+  text-align: right;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.total {
+  font-size: 28rpx;
+  text-align: center;
+  color: #555;
+  line-height: 2;
+}

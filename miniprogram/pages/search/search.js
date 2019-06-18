@@ -1,193 +1,201 @@
 // miniprogram/pages/search/search.js
-const app = getApp() 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    searchType: '', // 搜索是类型（成语/或者百家姓）
     inputValue: '',
-    openid: '',
-    showHistory: true,
-    historyList: []
+    list: [],
+    page: 1, // 页码
+    num: 10, // 每页展示个数
+    loading: false, // 是否正在加载
+    isOver: false, // 滑动到底
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
-    console.log('是否已有用户openId：', app.globalData.openid)
-
-    // 是否存在用户的openId
-    if (app.globalData.openid) {
-      this.setData({
-        openid: app.globalData.openid
-      })
-    }
-    
+  onLoad: function (options) {
+    let type = options.type
+    wx.setNavigationBarTitle({
+      title: '搜索' + options.type //页面标题为路由参数
+    })
+    this.setData({
+      searchType: options.type
+    })
   },
 
   bindKeyInput(e) {
     this.setData({
-      inputValue: e.detail.value
+      inputValue: e.detail.value,
+      isOver: false,
+      list: []
     })
-    console.log(this.data.inputValue)
   },
 
-  // 进入搜索结果页 -> list
-  goSearch() {
-    let content = this.data.inputValue
-    if (!content) {
-      console.log('内容为空')
+  getList() {
+    let {inputValue, searchType} = this.data
+    if (!inputValue) {
       return
     }
 
-    this.onHistory(content)
+    let database = ''
+    let condition = {}
 
-    wx.navigateTo({
-      url: `/pages/list/list?content=${content}`,
-    })
-  },
-
-  historyGoSearch(e) {
-    console.log(e)
-    let content = e.currentTarget.dataset.title
-    wx.navigateTo({
-      url: `/pages/list/list?content=${content}`,
-    })
-  },
-
-  // 清空历史记录
-  bindClearHistory() {
-    const db = wx.cloud.database()
-    db.collection('food').doc('history' + this.data.openid).update({
-      data: {
-        historyList: []
+    switch(searchType)
+      {
+        case '成语':
+          database = 'idiom2'
+          condition = {word: {
+              $regex:'.*'+ inputValue,
+              $options: 'i'
+            }}
+          break;
+        case '姓氏':
+          database = 'baijiaxing'
+          condition = {name: {
+            $regex:'.*'+ inputValue,
+            $options: 'i'
+          }}
+          break;
+        case '古诗词':
+          database = 'gushici'
+          condition = {
+            name: {
+              $regex:'.*'+ inputValue,
+              $options: 'i'
+            }
+          }
+          break;
+        case '作者':
+          database = 'gushici'
+          condition = {
+            poet: {
+              $regex:'.*'+ inputValue,
+              $options: 'i'
+            }
+          }
+          break;
+        default:
+          database = 'xiehouyu'
+          condition = {riddle: {
+            $regex:'.*'+ inputValue,
+            $options: 'i'
+          }}
+          break;
       }
-    }).then((res) => {
-      console.log(res)
-      wx.showToast({
-        icon: '删除',
-        title: '清空历史',
+
+
+    if (!this.data.isOver) {
+      let { list, page, num } = this.data
+      let that = this
+      this.setData({
+        loading: true
       })
-    })
 
-    this.setData({
-      historyList: []
-    })
-  },
-
-  // 添加历史记录
-  onHistory (content) {
-    const db = wx.cloud.database()
-    let that = this
-
-    // 查看是否有历史记录
-    db.collection('food').where({
-      _openid: this.data.openid,
-      _id: 'history' + this.data.openid
-    }).get({
-      success: res => {
-        console.log('[数据库] [查询记录] 成功: ', res)
-        if (!res.data.length) {
-          console.log(' 历史记录为空')
-          let historyArray = []
-          historyArray.unshift(content)
-          db.collection('food').add({
-            data: {
-              _id: 'history' + that.data.openid,
-              description: 'history',
-              historyList: historyArray
-            }
-          }).then(res => {
-            console.log(res)
+      // 模糊查询
+      wx.cloud.callFunction({
+        name: 'collection_get',
+        data: {
+          database,
+          page,
+          num,
+          condition
+        },
+      }).then(res => {
+        if (!res.result.data.length) { // 没搜索到
+          that.setData({
+            loading: false,
+            isOver: true
           })
-        } else {    
-          console.log('已有历史记录')
-          let historyArray = res.data[0].historyList
-          historyArray.unshift(content)
-          console.log([...new Set(historyArray)])
-          db.collection('food').doc('history' + that.data.openid).update({
-            data: {
-              historyList: [...new Set(historyArray)]
-            }
-          }).then((res) => {
-            console.log(res)
+        } else {
+          let res_data = res.result.data
+          list.push(...res_data)
+          that.setData({
+            list,
+            loading: false
           })
         }
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '查询记录失败'
-        })
-        console.error('[数据库] [查询记录] 失败：', err)
-      }
-    })
+      })
+        .catch(console.error)
+    }
   },
 
-  // 读取历史记录
-  getHistory() {
-    let that = this
-    const db = wx.cloud.database()
-    db.collection('food').doc('history' + that.data.openid).get({
-      success(res) {
-        console.log(res.data)
-        that.setData({
-          historyList: res.data.historyList
-        })
-      }
+  goDetail (e) {
+    let _id = e.currentTarget.dataset.id
+    let {searchType} = this.data
+    let database = ''
+
+    switch(searchType)
+    {
+      case '成语':
+        database = 'idiom-detail'
+        break;
+      case '姓氏':
+        database = 'baijiaxing-detail'
+        break;
+      case '古诗词':
+        database = 'detail'
+        break;
+      case '作者':
+        database = 'detail'
+        break;
+      default:
+        return false;
+    }
+    wx.navigateTo({
+      url: `/pages/${database}/${database}?id=${_id}`,
     })
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    this.getHistory()
+  onShow: function () {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
-    this.getHistory()
+  onHide: function () {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

@@ -1,0 +1,13 @@
+/* miniprogram/pages/poet/poet.wxss */
+.poet {
+  padding: 30rpx;
+}
+.name {
+  text-align: center;
+  font-size: 36rpx;
+  padding: 30rpx;
+}
+.content {
+  font-size: 28rpx;
+  line-height: 1.6;
+}

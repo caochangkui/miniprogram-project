@@ -1,0 +1,10 @@
+<view class="ranking" wx:if='{{isDown}}'>
+  <view class="item" wx:for='{{list}}' wx:key='{{index}}' wx:if="{{item.score > 0}}" >
+    <view class="left">
+      <text class="num">{{index+1}}</text>
+      <image src='{{item.avatarUrl}}'></image>
+      <text>{{item.username}}</text>
+    </view>
+    <view class="right">{{item.score}}</view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+  <view class="idiom">
+    <view class='box'>
+      <view class="alphabeta">
+        <text wx:for='{{alphabeta}}' wx:key='{{index}}' data-letter='{{item}}' bindtap='getLetterList'>{{item == '字' ? '字谜' : item }}类</text>
+      </view>
+      <view class='item' wx:for='{{list}}' wx:key='{{index}}' data-answer='{{item.answer}}' bindtap='goDetail'>
+        <view class='item-inner'>
+          <view>{{item.riddle}}</view>
+        </view>
+        <i class="wx-icon-custom-gengduo"></i>
+      </view>
+      <view class='item loading' wx:if="{{loading}}" style='text-align:center;'>
+        <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+      </view>
+      <view class='bottom' wx:if="{{isOver}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+        <text style='color:#666;'>--- 我是有底线的 ---</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

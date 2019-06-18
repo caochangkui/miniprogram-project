@@ -1,0 +1,19 @@
+<view class='detail' wx:if='{{isExist && isDown}}'>
+  <view class='title'>{{detail.name}}</view>
+  <view class='items'>
+    <view class="tag">历史来源：</view>
+    <text class="text">{{detail.from}}</text>
+  </view>
+  <view class='items'>
+    <view class="tag">家族名人：</view>
+    <text class="text">{{detail.celebrity}}</text>
+  </view>
+  <view class='items'>
+    <view class="tag">地域分布：</view>
+    <text class="text">{{detail.aresdistribute}}</text>
+  </view>
+
+</view>
+<view class='no-list' wx:if="{{!isExist}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+  <text style='color:#666;'>--- 未找到 ---</text>
+</view>

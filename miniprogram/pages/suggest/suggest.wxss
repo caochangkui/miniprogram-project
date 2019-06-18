@@ -1,0 +1,17 @@
+.suggest {
+    padding: 30rpx;
+    font-size: 30rpx;
+    box-sizing: border-box;
+}
+
+textarea {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: 20rpx;
+  line-height: 2;
+}
+button {
+  margin-top: 40rpx;
+}

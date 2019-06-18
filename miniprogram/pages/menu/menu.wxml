@@ -1,12 +1,37 @@
 <!--miniprogram/pages/menu/menu.wxml-->
 <view class="menu">
-  <view class='item' wx:for='{{list}}' wx:key='{{index}}'>
+  <view class='top'>
+    <view class='search' data-type="古诗词" bindtap='goSearch'>
+      <input placeholder='搜索古诗词' disabled></input>
+      <image src='/images/search.png'></image>
+    </view>
+    <view class='search' data-type="作者" bindtap='goSearch'>
+      <input placeholder='搜索作者' disabled></input>
+      <image src='/images/search.png'></image>
+    </view>
+  </view>
+  <view class='item' wx:for='{{list}}'
+        wx:key='{{index}}' wx:for-index="parentIdx" wx:for-item="parentItem">
     <view class='title'>
-      <image src='/images/tags.png'></image>
-      <text>{{item.name}}</text>
+      <text>{{parentItem.name}}</text>
     </view>
     <view class='classic'>
-      <text wx:for='{{item.list}}' wx:key='{{index}}' data-tags='{{item.id}}'  data-content='{{item.name}}' bindtap='goList'>{{item.name}}</text> 
-    </view> 
-  </view> 
+      <text
+        wx:for='{{parentItem.list}}'
+        wx:key='{{index}}'
+        data-parenttags='{{parentItem.name}}'
+        data-tags='{{item}}'
+        bindtap='goList'
+        wx:if='{{index < 10 || showMore == parentIdx}}'
+      >{{item}}</text>
+      <block wx:if="{{parentItem.list.length >= 10}}">
+        <view wx:if="{{showMore == parentIdx}}" class='btn' data-parentIdx='{{parentIdx}}' bindtap='foldToggle'>
+          收起 <i class="wx-icon-custom-shouqi"></i>
+        </view>
+        <view wx:else class='btn' data-parentIdx='{{parentIdx}}' bindtap='unfoldToggle'>
+          查看更多 <i class="wx-icon-custom-spread-line"></i>
+        </view>
+      </block>
+    </view>
+  </view>
 </view>

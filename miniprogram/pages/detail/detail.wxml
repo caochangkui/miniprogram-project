@@ -1,40 +1,49 @@
-<!--miniprogram/pages/detail/detail.wxml-->
-<view class='detail' wx:if='{{isExit}}'>
-    <view class='banner'>
-      <image src='{{detail.albums[0]}}'  ></image>
-    </view>
-    <view class='title'>
-      <text>{{detail.title}}</text>
-      <view class='see'> <image src='/images/see.png' mode='widthFix'></image> {{detail.id}} 人浏览</view>
-      <view class='tags'>
-        <text wx:for='{{tags}}' wx:key='{{index}}'>{{item}}</text>
+<!-- miniprogram/pages/detail/detail.wxml -->
+<view class='detail' wx:if='{{isExist && isDown}}'>
+  <view class='title'>{{detail.name}}</view>
+  <view class="poet">
+    <view>{{detail.dynasty}}</view>
+    <view class="name" data-poet='{{detail.poet}}' bindtap='goPoet' >{{detail.poet}}</view>
+  </view>
+  <view class="poem">
+    <text wx:for='{{detail.content}}' wx:key='{{index}}'>{{item}}</text>
+  </view>
+  <view class="tags">
+    <text wx:for='{{detail.tags}}' wx:key='{{index}}' data-parenttags='标签' data-tags='{{item}}' bindtap='goList'>{{item}}</text>
+  </view>
+  <view class="more">
+    <view class='topTabSwiper'>
+      <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>
+        译文
       </view>
-      <view class='intro'>
-        {{detail.imtro}}
+      <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>
+        注释
+      </view>
+      <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>
+        赏析
       </view>
     </view>
-    <view class='ingredients'>
-      <text>主料</text> 
-      <text wx:for='{{ingredients}}' wx:key='{{index}}'>{{item}}</text>
+    <view class='swiper'>
+      <view class='itembox {{currentData == 0 ? "showItem" : ""}}'>
+        <view wx:for='{{detail.yiwen}}' wx:key='{{index}}'>{{item}}</view>
+        <view wx:if='{{!detail.yiwen.length}}'>暂无译文</view>
+      </view>
+      <view class='itembox {{currentData == 1 ? "showItem" : ""}}'>
+        <view wx:for='{{detail.zhushi}}' wx:key='{{index}}'>{{item}}</view>
+        <view wx:if='{{!detail.zhushi.length}}'>暂无注释</view>
+      </view>
+      <view class='itembox {{currentData == 2 ? "showItem" : ""}}'>
+        <view wx:for='{{detail.shangxi}}' wx:key='{{index}}'>{{item}}</view>
+        <view wx:if='{{!detail.shangxi.length}}'>暂无赏析</view>
+      </view>
     </view>
-    <view class='ingredients'>
-      <text>辅料</text>
-      <text wx:for='{{burden}}' wx:key='{{index}}'>{{item}}</text>
-    </view>
-    <view class='steps'> 
-      <text class='top'>步骤</text>
-      <view class='item' wx:for='{{detail.steps}}' wx:key='{{index}}'>
-        <text>第{{index + 1}}步</text>
-        <image src='{{item.img}}'></image>
-        <view>{{item.step}}</view>
-      </view> 
-    </view>
+  </view>
 </view>
 
 <!-- 首页 -->
 <view class='backhome' bindtap='onBackhome'>
   <image src='/images/nav/index-active.png'></image>
-  <!-- <text>首页</text> -->
+  <text>回首页</text>
 </view>
 
 <!-- 分享 -->
@@ -46,16 +55,21 @@
 
 <!-- 用户未登录 -->
 <view class='collect' wx:if='{{!logged}}' style='z-index:11;background: rgba(0, 0, 0, .1);'>
-  <button open-type="getUserInfo" bindgetuserinfo='getUser' style='border:1;'></button>
+  <button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo' style='border:1;'></button>
 </view>
 
 <!-- 用户已登录 -->
-<view class='collect' catchtap='bindCollect' >
+<view class='collect' wx:if='{{!isCollect}}' catchtap='bindCollect' >
   <image src='/images/collect.png'></image>
-  <text wx:if='{{isCollect}}'>收藏</text>
-  <text wx:if='{{!isCollect}}'>已收藏</text>
+  <text>收藏</text>
 </view>
 
-<view class='no-list' wx:if="{{!isExit}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
-  <text style='color:#666;'>--- 未找到您搜索的菜品 ---</text>
+<view class='collect' wx:if='{{isCollect}}' catchtap='unbindCollect' >
+  <image src='/images/collect.png'></image>
+  <text>已收藏</text>
+</view>
+
+
+<view class='no-list' wx:if="{{!isExist}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+  <text style='color:#666;'>--- 未找到 ---</text>
 </view>

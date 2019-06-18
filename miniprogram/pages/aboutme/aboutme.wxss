@@ -1,0 +1,26 @@
+.about {
+  height: 100%;
+  padding: 0 30rpx;
+  position: relative;
+  font-size: 24rpx;
+}
+.item {
+  text-align: center;
+  font-size: 32rpx;
+  padding-top: 50%;
+}
+image {
+  height: 160rpx;
+  width: 160rpx;
+  border-radius: 50%;
+}
+.item view {
+  padding-top: 30rpx;
+}
+.bottom {
+  position: absolute;
+  bottom: 20rpx;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}

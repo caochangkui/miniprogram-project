@@ -1,0 +1,10 @@
+<view class="about">
+  <view class="item">
+    <image src='/images/logo.png'></image>
+    <view>诗词古语</view>
+  </view>
+
+  <view class="bottom">
+    Copyright © 2019-2020 Cedric. All Rights Reserved
+  </view>
+</view>

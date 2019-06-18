@@ -8,8 +8,42 @@
   width: 40rpx;
   margin-right: 10rpx;
 }
+.top {
+  position: relative;
+  padding: 30rpx 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.top .search {
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  border-radius: 40rpx;
+  height: 68rpx;
+  width: 44%;
+  padding: 0 20rpx;
+  margin: 0 10rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+}
+
+.top .search image {
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 20rpx;
+}
+
+.top input {
+  border: none;
+  flex: 1;
+  padding-left: 20rpx;
+}
+
 .menu .item {
-  margin-bottom: 30rpx;
+  margin-bottom: 16rpx;
 }
 .menu .title {
   display: flex;
@@ -26,10 +60,17 @@
   align-items: center;
 }
 .menu .item .classic text {
-  border: 1px solid #f8dada;
-  padding: 10rpx 20rpx;
+  border: 1px solid #f79696;
+  padding: 6rpx 20rpx;
   margin: 20rpx;
   color: #777;
   font-size: 24rpx;
-  border-radius: 18rpx;
+  border-radius: 28rpx;
+}
+.menu .item .classic .btn {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 28rpx;
+  color: #777;
 }

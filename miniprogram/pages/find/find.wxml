@@ -1,0 +1,40 @@
+<!--pages/find/find.wxml-->
+<view class="find">
+  <view class="item">
+    <text class="title">成语接龙</text>
+    <!-- 如果用户已登录 -->
+    <view class="option" wx:if='{{logged}}'>
+      <button type="default" bindtap='goJielong'> 开始挑战 </button>
+      <button type="default" data-type='成语接龙' bindtap='goRecord'> 我的战绩 </button>
+      <button type="default" data-type='成语接龙' bindtap='goRanking'> 排行榜 </button>
+    </view>
+    <!-- 用户未登录 -->
+    <view class="option" wx:else>
+      <button type="default" open-type="getUserInfo" bindgetuserinfo='goJielong'>开始挑战</button>
+      <button type="default" open-type="getUserInfo" bindgetuserinfo='goRecord'>我的战绩</button>
+      <button type="default" data-type='成语接龙' open-type="getUserInfo" bindgetuserinfo='goRanking'>排行榜</button>
+    </view>
+  </view>
+  <view class="item">
+    <text class="title">飞花令</text>
+    <view class="option">
+      <button type="default" bindtap='goFeihuaSelect'> 开始挑战 </button>
+      <!-- <button type="default" bindtap=''> 我的战绩 </button>
+      <button type="default" > 排行榜 </button> -->
+    </view>
+  </view>
+  <view class="item">
+    <text class="title">姓名源于哪首古诗词</text>
+    <view class="option">
+      <button type="default" bindtap='gocangtoushi'> 查一查 </button>
+      <!-- <button type="default" > 排行榜 </button> -->
+    </view>
+  </view>
+  <view class="item">
+    <text class="title">诗词接龙</text>
+    <view class="option comming">
+      <button type="default" bindtap=''> 即将开放 </button>
+      <button type="default" > 排行榜 </button>
+    </view>
+  </view>
+</view>

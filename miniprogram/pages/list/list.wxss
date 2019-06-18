@@ -1,46 +1,51 @@
-/* miniprogram/pages/list/list.wxss */
-
-.box {
-  border: 1px solid #ddd;
-  margin: 20rpx 30rpx 40rpx 30rpx;
-  padding: 20rpx 30rpx 20rpx 270rpx;
-  font-size: 28rpx;
-  height: 200rpx;
-  overflow: hidden;
-  position: relative; 
-  border-radius: 10rpx;
-  box-shadow: 1px 1px 6rpx #ccc; 
+.choiceness {
+  margin: 40rpx 30rpx;
 }
 
-.box image {
-  height: 200rpx;
-  width: 220rpx; 
-  position: absolute;
-  top: 20rpx;
-  left: 10rpx;
-  border-radius: 10rpx;
-}
-
-.box view { 
-  padding-top: 0rpx;
-}
-
-.box view text {
+.choiceness .title {
+  font-size: 32rpx;
+  text-align: center;
   display: block;
+  color: #ff6666;
+}
+
+.choiceness view.box {
+  padding: 30rpx 20rpx;
+  margin-bottom: 24rpx;
+  background: #fff;
+  height: 220rpx;
+  line-height: 1.6;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+}
+
+.choiceness view.box .poet {
+  text-overflow: -o-ellipsis-lastline;
+  height: 38%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 2;
+  color: #666;
+}
+
+.choiceness view.box .name-like {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.choiceness view.box .name-like .name {
+  width: 70%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-bottom: 10rpx;
-  color: #555;
+}
+
+.choiceness view.box .name-like .like {
   font-size: 24rpx;
-}
-.box view text.title {
-  color: #333;
-  font-weight: 600;
-  font-size: 30rpx;
-  padding-bottom: 16rpx;
-}
-.box view text.see {
-  color: #FF6262;
-  padding-top: 10rpx;
+  color: #f79b9b;
 }
