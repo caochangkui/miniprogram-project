@@ -7,11 +7,15 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
-	"appid": "",
-	"projectname": "kaifanlei",
-	"libVersion": "2.2.5",
+	"appid": " ",
+	"projectname": "诗词古语",
+	"libVersion": "2.6.6",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -28,6 +32,15 @@
 		"game": {
 			"list": []
 		},
-		"miniprogram": {}
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "db guide",
+					"pathName": "pages/databaseGuide/databaseGuide"
+				}
+			]
+		}
 	}
 }
