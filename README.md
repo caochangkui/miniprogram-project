@@ -37,11 +37,6 @@
 
 <img src="https://www.cnblogs.com/images/cnblogs_com/cckui/1107952/o_1558438974751.jpg" width="225" height="400"  />
 
-####  唐诗宋词
-
-<img src="https://www.cnblogs.com/images/cnblogs_com/cckui/1107952/o_1558438795089.jpg" width="225" height="400"  />
-
-
 
 ####  成语接龙
 
@@ -342,7 +337,11 @@ collection.update 函数调用成功单返回的却是0行记录被更新，因�
 }
 ```
 
+---
+
+## 其他小程序作品预览：
 
 
-
+<img src="https://www.cnblogs.com/images/cnblogs_com/cckui/1107952/o_%e5%9e%83%e5%9c%be%e5%88%86%e7%b1%bb.png" width="300" />
+<br>
 
