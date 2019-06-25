@@ -342,6 +342,6 @@ collection.update 函数调用成功单返回的却是0行记录被更新，因�
 ## 其他小程序作品预览：
 
 
-<img src="https://www.cnblogs.com/images/cnblogs_com/cckui/1107952/o_%e5%9e%83%e5%9c%be%e5%88%86%e7%b1%bb.png" width="300" />
+<img src="https://images.cnblogs.com/cnblogs_com/cckui/1107952/o_%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB.png" width="300" />
 <br>
 
