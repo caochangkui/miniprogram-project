@@ -341,9 +341,13 @@ collection.update 函数调用成功单返回的却是0行记录被更新，因�
 
 ## 其他小程序作品预览：
 
-![image](https://www.cnblogs.com/images/cnblogs_com/cckui/1107952/o_%e5%9e%83%e5%9c%be%e5%88%86%e7%b1%bb.png)
 
+<img src="https://github.com/caochangkui/miniprogram-project/blob/master/miniprogram/images/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB.png?raw=true" width="320" />
 <br>
 
 
 <img src="https://www.cnblogs.com/images/cnblogs_com/cckui/1107952/o_code.jpg" width="320" />
+
+
+
+
