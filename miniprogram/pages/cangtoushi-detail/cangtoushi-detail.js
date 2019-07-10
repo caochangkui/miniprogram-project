@@ -7,13 +7,13 @@ Page({
    */
   data: {
     id: '',
-    currentData: 0, // 选项卡
+    currentData: 0,
     detail: {},
-    page: 1, // 页码
-    num: 1, // 每页展示个数
-    isDown: false, // 是否完全加载
-    loading: false, // 是否正在加载
-    isExist: true, // 此诗词是否存在
+    page: 1,
+    num: 1,
+    isDown: false,
+    loading: false,
+    isExist: true,
   },
 
   /**
@@ -26,7 +26,7 @@ Page({
       id: options.id
     })
     if (options.id) {
-      this.loadDetail(options.id) // 加载详情
+      this.loadDetail(options.id)
     }
   },
 
@@ -49,7 +49,7 @@ Page({
       },
     }).then(res => {
       console.log(res.result)
-      if (!res.result.data.length) { // 没搜索到
+      if (!res.result.data.length) {
         that.setData({
           isExist: false
         })

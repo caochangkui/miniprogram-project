@@ -8,10 +8,10 @@ Page({
     parenttags: '',
     tags: '',
     list: [],
-    page: 1, // 页码
-    num: 10, // 每页展示个数
-    loading: false, // 是否正在加载
-    isOver: false, // 滑动到底
+    page: 1,
+    num: 10,
+    loading: false,
+    isOver: false,
   },
 
   /**
@@ -66,7 +66,7 @@ Page({
           condition
         },
       }).then(res => {
-          if(!res.result.data.length) { // 没搜索到
+          if(!res.result.data.length) {
             that.setData({
               loading: false,
               isOver: true

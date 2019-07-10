@@ -149,7 +149,7 @@ wx.cloud.callFunction({
         }
     },
     }).then(res => {
-        if(!res.result.data.length) { // 没搜索到
+        if(!res.result.data.length) {
             that.setData({
                 loading: false,
                 isOver: true
@@ -248,7 +248,7 @@ wx.cloud.callFunction({
         condition
     },
 }).then(res => {
-    if (!res.result.data.length) { // 没搜索到
+    if (!res.result.data.length) {
         that.setData({
             loading: false,
             isOver: true

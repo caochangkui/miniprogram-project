@@ -39,7 +39,7 @@ Page({
 
     wx.hideLoading();
 
-    // 是否存在用户的openId
+     用户的openId
     if (app.globalData.openid) {
       this.setData({
         openid: app.globalData.openid

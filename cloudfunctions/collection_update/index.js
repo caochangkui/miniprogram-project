@@ -1,4 +1,3 @@
-// 更新数据 - update 记录已浏览人数
 const cloud = require('wx-server-sdk')
 cloud.init()
 

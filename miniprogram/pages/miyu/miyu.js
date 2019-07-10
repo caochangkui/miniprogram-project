@@ -7,20 +7,17 @@ Page({
     alphabeta: ["节日", "动物", "植物", "成语", "字"],
     thisLetter: '',
     list: [],
-    page: 1, // 页码
-    num: 10, // 每页展示个数
-    loading: false, // 是否正在加载
-    isOver: false, // 滑动到底
+    page: 1,
+    num: 10,
+    loading: false,
+    isOver: false,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.getList('')
   },
 
-  // 上拉加载
+
   lower(e) {
     if (!this.data.loading) {
       this.getList(this.data.thisLetter)
@@ -57,7 +54,7 @@ Page({
           }}
         },
       }).then(res => {
-        if (!res.result.data.length) { // 没搜索到
+        if (!res.result.data.length) {
           that.setData({
             loading: false,
             isOver: true

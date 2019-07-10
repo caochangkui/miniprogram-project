@@ -10,11 +10,11 @@ Page({
     userInfo: {},
     logged: false,
     list: [],
-    sentence: {}, // 每日一句
-    page: 2, // 页码
-    num: 5, // 每页展示个数
-    loading: false, // 是否正在加载
-    isOver: false, // 滑动到底
+    sentence: {},
+    page: 2,
+    num: 5,
+    loading: false,
+    isOver: false,
   },
 
   onLoad: function() {
@@ -86,7 +86,7 @@ Page({
 
   },
 
-  // 上拉加载
+
   lower(e) {
     if (!this.data.loading) {
       this.getList()
@@ -111,7 +111,7 @@ Page({
           }
         },
       }).then(res => {
-          if(!res.result.data.length) { // 没搜索到
+          if(!res.result.data.length) {
             that.setData({
               loading: false,
               isOver: true
@@ -155,16 +155,6 @@ Page({
     }
   },
 
-  onShow: function () {
-    // if (!this.data.isClose) {
-    //   this.setData({
-    //     page: 2, // 页码
-    //     isClose: true,
-    //     list: []
-    //   })
-    //   this.getList()
-    // }
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

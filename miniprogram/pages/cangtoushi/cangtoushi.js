@@ -10,10 +10,10 @@ Page({
    */
   data: {
     list: [],
-    page: 1, // 页码
-    num: 1, // 每页展示个数
-    loading: false, // 是否正在加载
-    isOver: false, // 是否结束
+    page: 1,
+    num: 1,
+    loading: false,
+    isOver: false,
     key: false,
     dynasty: false,
   },
@@ -91,7 +91,6 @@ Page({
     })
   },
 
-  // 重新加载
   reload () {
     this.setData({
       page: this.data.page + 1,
@@ -164,7 +163,6 @@ Page({
     }
   },
 
-  // 切割诗词，并选出包含关键字的那一句
   splitPoem (poem, word) {
     let _poem = {}
     Object.assign(_poem,poem);

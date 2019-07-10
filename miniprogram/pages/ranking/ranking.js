@@ -6,7 +6,7 @@ Page({
    */
   data: {
     list: [],
-    isDown: false, // 页面是否请求结束
+    isDown: false,
   },
 
   /**
@@ -44,7 +44,7 @@ Page({
         condition
       },
     }).then(res => {
-      if (!res.result.data.length) { // 没搜索到
+      if (!res.result.data.length) {
         console.log('没找到jielong排行榜')
       } else {
         let res_data = res.result.data[0]

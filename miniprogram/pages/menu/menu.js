@@ -20,7 +20,7 @@ Page({
     this.loadList()
   },
 
-  // 获取列表数据
+
   loadList() {
     let { list } = this.data;
     wx.showLoading({

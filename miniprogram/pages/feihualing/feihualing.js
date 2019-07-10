@@ -6,9 +6,9 @@ Page({
     _id: '',
     type: '',
     list: [],
-    page: 1, // 页码
-    num: 1, // 每页展示个数
-    sending: false, // 提交中，禁止重复提交
+    page: 1,
+    num: 1,
+    sending: false,
     inputValue: ''
   },
 

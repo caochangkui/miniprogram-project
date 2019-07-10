@@ -7,7 +7,7 @@ Page({
    */
   data: {
     historyList: [],
-    isDown: false, // 页面是否请求结束
+    isDown: false,
     showMore: -1
   },
 
@@ -49,7 +49,7 @@ Page({
         condition
       },
     }).then(res => {
-      if (!res.result.data.length) { // 没搜索到
+      if (!res.result.data.length) {
         console.log('没找到')
       } else {
         let res_data = res.result.data[0]

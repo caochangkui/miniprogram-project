@@ -5,13 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchType: '', // 搜索是类型（成语/或者百家姓）
+    searchType: '',
     inputValue: '',
     list: [],
-    page: 1, // 页码
-    num: 10, // 每页展示个数
-    loading: false, // 是否正在加载
-    isOver: false, // 滑动到底
+    page: 1,
+    num: 10,
+    loading: false,
+    isOver: false,
   },
 
   /**
@@ -20,7 +20,7 @@ Page({
   onLoad: function (options) {
     let type = options.type
     wx.setNavigationBarTitle({
-      title: '搜索' + options.type //页面标题为路由参数
+      title: '搜索' + options.type
     })
     this.setData({
       searchType: options.type
@@ -95,7 +95,6 @@ Page({
         loading: true
       })
 
-      // 模糊查询
       wx.cloud.callFunction({
         name: 'collection_get',
         data: {
@@ -105,7 +104,7 @@ Page({
           condition
         },
       }).then(res => {
-        if (!res.result.data.length) { // 没搜索到
+        if (!res.result.data.length) {
           that.setData({
             loading: false,
             isOver: true

@@ -53,22 +53,6 @@
   <button open-type='share'></button>
 </view>
 
-<!-- 用户未登录 -->
-<view class='collect' wx:if='{{!logged}}' style='z-index:11;background: rgba(0, 0, 0, .1);'>
-  <button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo' style='border:1;'></button>
-</view>
-
-<!-- 用户已登录 -->
-<view class='collect' wx:if='{{!isCollect}}' catchtap='bindCollect' >
-  <image src='/images/collect.png'></image>
-  <text>收藏</text>
-</view>
-
-<view class='collect' wx:if='{{isCollect}}' catchtap='unbindCollect' >
-  <image src='/images/collect.png'></image>
-  <text>已收藏</text>
-</view>
-
 
 <view class='no-list' wx:if="{{!isExist}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
   <text style='color:#666;'>--- 未找到 ---</text>

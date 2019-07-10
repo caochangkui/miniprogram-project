@@ -5,18 +5,18 @@ Page({
    */
   data: {
     detail: {},
-    page: 1, // 页码
-    num: 1, // 每页展示个数
-    isDown: false, // 页面是否请求结束
-    loading: false, // 是否正在加载
-    isExist: true, // 是否存在
+    page: 1,
+    num: 1,
+    isDown: false,
+    loading: false,
+    isExist: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.loadDetail(options.id) // 加载详情
+      this.loadDetail(options.id)
   },
 
   loadDetail(id) {
@@ -37,7 +37,7 @@ Page({
         }
       },
     }).then(res => {
-      if (!res.result.data.length) { // 没搜索到
+      if (!res.result.data.length) {
         wx.showToast({
           icon: 'warn',
           title: '加载失败',

@@ -3,13 +3,10 @@ const app = getApp()
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     list: [],
-    isOver: false, // 列表为空
-    loading: true, // 是否正在加载
+    isOver: false,
+    loading: true,
   },
 
   /**
@@ -34,7 +31,7 @@ Page({
         }
       },
     }).then(res => {
-        if(!res.result.data.length) { // 没搜索到
+        if(!res.result.data.length) {
           that.setData({
             loading: false,
             isOver: true

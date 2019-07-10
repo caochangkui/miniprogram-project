@@ -5,12 +5,12 @@ Page({
    */
   data: {
     list: [],
-    sentence: {}, // 每日一句
-    sentencePage: 50, // 每日一句 页码
-    page: 1, // 页码
-    num: 10, // 每页展示个数
-    loading: false, // 是否正在加载
-    isOver: false, // 滑动到底
+    sentence: {},
+    sentencePage: 50,  页码
+    page: 1,
+    num: 10,
+    loading: false,
+    isOver: false,
   },
 
   /**
@@ -20,7 +20,7 @@ Page({
     this.getList()
   },
 
-  // 上拉加载
+
   lower(e) {
     console.log('上拉加载')
     if (!this.data.loading) {
@@ -45,7 +45,7 @@ Page({
         },
       }).then(res => {
         console.log(res.result)
-        if (!res.result.data.length) { // 没搜索到
+        if (!res.result.data.length) {
           that.setData({
             loading: false,
             isOver: true
