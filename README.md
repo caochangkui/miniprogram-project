@@ -13,7 +13,7 @@
 
 ## 2. 小程序地址
 
-[https://github.com/caochangkui/miniprogram-project](https://github.com/caochangkui/miniprogram-project)
+[https://www.cnblogs.com/cckui/p/10228795.html](https://www.cnblogs.com/cckui/p/10228795.html)
 
 ## 3. 小程序预览：
 
