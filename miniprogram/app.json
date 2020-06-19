@@ -5,25 +5,7 @@
     "pages/find/find",
     "pages/user/user",
     "pages/list/list",
-    "pages/detail/detail",
-    "pages/poet/poet",
-    "pages/idiom/idiom",
-    "pages/idiom-detail/idiom-detail",
-    "pages/idiom-jielong/idiom-jielong",
-    "pages/xiehouyu/xiehouyu",
-    "pages/baijiaxing/baijiaxing",
-    "pages/baijiaxing-detail/baijiaxing-detail",
-    "pages/miyu/miyu",
-    "pages/ranking/ranking",
-    "pages/myRecord/myrecord",
-    "pages/collection/collection",
-    "pages/search/search",
-    "pages/cangtoushi/cangtoushi",
-    "pages/aboutme/aboutme",
-    "pages/feihua-select/feihua-select",
-    "pages/feihualing/feihualing",
-    "pages/suggest/suggest",
-    "pages/cangtoushi-detail/cangtoushi-detail"
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -37,8 +19,7 @@
     "selectedColor": "#FF6262",
     "borderStyle": "white",
     "backgroundColor": "#fff",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "iconPath": "/images/nav/index.png",
         "selectedIconPath": "/images/nav/index-active.png",
